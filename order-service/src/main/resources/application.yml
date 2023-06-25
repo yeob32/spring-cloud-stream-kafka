@@ -1,0 +1,17 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+        order-create:
+          destination: order-create
+      kafka:
+        binder:
+          brokers: "localhost:9094,localhost:9095,localhost:9096"
+        bindings:
+          order-create:
+            producer:
+              topic:
+                replication-factor: 1
+              configuration:
+                key:
+                  serializer: org.apache.kafka.common.serialization.StringSerializer

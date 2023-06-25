@@ -1,0 +1,21 @@
+server.port: 8081
+
+spring:
+  cloud:
+    stream:
+      function:
+        definition: stockProcess;
+      bindings:
+        stockProcess-in-0:
+          destination: order-create
+        stockProcess-out-0:
+          destination: order-stock-decrease
+      kafka:
+        binder:
+          brokers: "localhost:9094,localhost:9095,localhost:9096"
+        bindings:
+          stockProcess-out-0:
+            producer:
+              configuration:
+                key:
+                  serializer: org.apache.kafka.common.serialization.StringSerializer

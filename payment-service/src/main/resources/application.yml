@@ -1,0 +1,21 @@
+server.port: 8082
+
+spring:
+  cloud:
+    stream:
+      function:
+        definition: paymentProcess;
+      bindings:
+        paymentProcess-in-0:
+          destination: order-stock-decrease
+        paymentProcess-out-0:
+          destination: order-payment
+      kafka:
+        binder:
+          brokers: "localhost:9094,localhost:9095,localhost:9096"
+        bindings:
+          paymentProcess-out-0:
+            producer:
+              configuration:
+                key:
+                  serializer: org.apache.kafka.common.serialization.StringSerializer
