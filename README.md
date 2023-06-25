@@ -24,8 +24,8 @@
     - `spring.cloud.stream.bindings`
         - `spring.cloud.stream.bindings.<input>.destination`
             - 네이밍 규칙
-                - input : <functionName> + -in- + <index>
-                - output : <functionName> + -out- + <index>
+                - input : functionName + -in- + index
+                - output : functionName + -out- + index
     - kafka topic - `spring.cloud.stream.kafka.bindings`
 
 ### DLQ
